@@ -1,13 +1,4 @@
-import { useState } from "react";
-
-export default function AddItemModal({ isModalOpen, onClose }) {
-    const [formData, setFormData] = useState({
-        productName: "",
-        price: "",
-        stock: "",
-        sold: "",
-        image: null
-    })
+export default function AddItemModal({ isModalOpen, onClose, formData, setFormData }) {
     
     //Kalau gak open, jangan render apa-apa
     if (!isModalOpen) return null;
@@ -32,6 +23,13 @@ export default function AddItemModal({ isModalOpen, onClose }) {
         console.log(formData)
     }
 
+    // const addItem = () => {
+    //     const newCard = {
+    //         formData
+    //     }
+    //     setCardItem([...cardItem, newCard])
+    // }
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             
@@ -42,8 +40,8 @@ export default function AddItemModal({ isModalOpen, onClose }) {
                 <div className="">
                     <form action="" onSubmit={handleSubmit}>
                         <input type="text"
-                        name="name" 
-                        placeholder="Product name" 
+                        name="productName" 
+                        placeholder="Product Name" 
                         className="border border-slate-600 rounded-lg w-full py-1 px-2 mb-2" 
                         value={formData.name}
                         onChange={handleChange}/>
@@ -66,7 +64,8 @@ export default function AddItemModal({ isModalOpen, onClose }) {
                         name="sold" 
                         placeholder="Sold" 
                         className="border border-slate-600 rounded-lg w-full py-1 px-2 mb-2" 
-                        value={formData.sold}/>
+                        value={formData.sold}
+                        onChange={handleChange}/>
 
                         <input type="file" 
                         // placeholder="image"

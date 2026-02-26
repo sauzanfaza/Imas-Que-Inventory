@@ -2,10 +2,8 @@ import { FaPlus } from "react-icons/fa6";
 import { useState } from "react";
 import AddItemModal from "./AddItemModal";
 
-export default function ButtonAdd() {
-    const [isModalOpen, setIsModalOPen] = useState(false)
-
-    const handleOpenModal = () => setIsModalOPen(!isModalOpen)
+export default function ButtonAdd({isModalOpen, setIsModalOpen, formData, setFormData}) {
+    const handleOpenModal = () => setIsModalOpen(!isModalOpen)
 
     return(
         <>
@@ -14,8 +12,10 @@ export default function ButtonAdd() {
                 <FaPlus />
         </div>
         <AddItemModal 
+            formData={formData}
+            setFormData={setFormData}
             isModalOpen={isModalOpen} 
-            onClose={() => setIsModalOPen(false)}
+            onClose={() => setIsModalOpen(false)}
         />
         </>
     )

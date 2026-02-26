@@ -1,7 +1,7 @@
 import ButtonAdd from "./ButtonAdd";
 import { IoFilter } from "react-icons/io5";
 
-export default function Filter() {
+export default function Filter({isModalOpen, setIsModalOpen, formData, setFormData}) {
 
     return(
         <>
@@ -12,7 +12,7 @@ export default function Filter() {
                         <IoFilter />
                     </button>                  
             </div>
-            <ButtonAdd />
+            <ButtonAdd isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} formData={formData} setFormData={setFormData}/>
         </div>
         </>
     )
