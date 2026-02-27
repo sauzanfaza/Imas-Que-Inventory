@@ -1,4 +1,4 @@
-export default function AddItemModal({ isModalOpen, onClose, formData, setFormData }) {
+export default function AddItemModal({ isModalOpen, onClose, formData, setFormData, addCardItem}) {
     
     //Kalau gak open, jangan render apa-apa
     if (!isModalOpen) return null;
@@ -18,17 +18,11 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
         }))
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(formData)
-    }
-
-    // const addItem = () => {
-    //     const newCard = {
-    //         formData
-    //     }
-    //     setCardItem([...cardItem, newCard])
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     console.log(formData)
     // }
+// console.log(addCardItem)
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
@@ -38,12 +32,11 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
                 <h2 className="text-lg font-semibold mb-4">Add Item</h2>
 
                 <div className="">
-                    <form action="" onSubmit={handleSubmit}>
                         <input type="text"
                         name="productName" 
                         placeholder="Product Name" 
                         className="border border-slate-600 rounded-lg w-full py-1 px-2 mb-2" 
-                        value={formData.name}
+                        value={formData.productName}
                         onChange={handleChange}/>
                         
                         <input type="number" 
@@ -71,15 +64,22 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
                         // placeholder="image"
                         className="border border-slate-600 rounded-lg w-full py-1 px-2 mb-2" 
                         onChange={handleFileChange}/>
-                    </form>
                 </div>
 
+                <div className="flex justify-between">
                 <button
                     onClick={onClose}
-                    className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+                    className="mt-4 bg-red-500 hover:bg-red-600 cursor-pointer text-white px-4 py-2 rounded"
                 >
                     Close
                 </button>
+                <button
+                    onClick={addCardItem}
+                    className="mt-4 bg-green-600 hover:bg-green-700 cursor-pointer text-white px-4 py-2 rounded">
+                    Add
+                </button>
+
+                </div>
             </div>
 
         </div>
