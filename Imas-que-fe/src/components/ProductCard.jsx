@@ -1,7 +1,9 @@
-export default function ProductCard({cardItem}) {
+import SelectOption from "./SelectOption"
+
+export default function ProductCard({cardItem, deleteCardItem, id}) {
     return(
         <>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
         {cardItem.map((item) => (
         <div className="bg-slate-50 border border-slate-300 h-60 rounded-lg"
         key={item.id}>
@@ -23,8 +25,11 @@ export default function ProductCard({cardItem}) {
                 <p>Sold: {item.sold}</p>
             </div>
 
-            <div className="text-lg">
-            :
+            <div className="text-md cursor-pointer">
+            <SelectOption 
+            deleteCardItem={deleteCardItem}
+            id={item.id}
+            />
             </div>
         </div>
         </div>

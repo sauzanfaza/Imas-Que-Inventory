@@ -30,18 +30,34 @@ export default function App() {
 
         setCardItem([...cardItem, newCard])
         setIsModalOpen(false)
+        setFormData({
+            id: "",
+        productName: "",
+        price: "",
+        stock: "",
+        sold: "",
+        image: null
+        })
     }
+
+    const deleteCardItem = (id) => {
+            const newCardAfterDelete = cardItem.filter((item) => item.id !== id)
+            setCardItem(newCardAfterDelete)
+        }
 
     return(
     <>
     <div className="bg-slate-200 min-h-screen p-2">
     <Navbar />
+
     <Filter isModalOpen={isModalOpen} 
     setIsModalOpen={setIsModalOpen}
     formData={formData} 
     setFormData={setFormData}
     addCardItem={addCardItem}/>
-    <ProductCard cardItem={cardItem}/>
+    
+    <ProductCard cardItem={cardItem} 
+    deleteCardItem={deleteCardItem}/>
     </div>
     </>
     )
