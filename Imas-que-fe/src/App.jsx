@@ -16,7 +16,10 @@ export default function App() {
     })
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
+    const [editId, setEditId] = useState(null)
 
+    // add card item
     const addCardItem = () => {
         const newId = cardItem.length > 0 ? Math.max(...cardItem.map(card => card.id)) + 1 : 1
         const newCard = {
@@ -40,9 +43,45 @@ export default function App() {
         })
     }
 
+    //delete card item
     const deleteCardItem = (id) => {
             const newCardAfterDelete = cardItem.filter((item) => item.id !== id)
             setCardItem(newCardAfterDelete)
+        }
+    
+        //edit card item
+        //start edit dengan open modal card dulu
+        const startEdit = (id) => {
+            const card = cardItem.find((item) => item.id === id)
+
+            setIsEdit(true)
+            setEditId(id)
+            setFormData({
+                productName: card.productName,
+                price: card.price,
+                stock: card.stock,
+                sold: card.sold,
+                image: card.image
+            })
+            setIsModalOpen(true)
+        }
+
+        //save edit
+        const saveEdit = () => {
+            const updated = cardItem.map((item) => item.id === editId ?
+            { ...item,
+                productName: formData.productName,
+                price: formData.price,
+                stock: formData.stock,
+                sold: formData.sold,
+                image: formData.image
+            } : item
+        )
+
+        setCardItem(updated)
+        setIsModalOpen(false)
+        setEditId(null)
+        setIsEdit(false)
         }
 
     return(
@@ -57,7 +96,9 @@ export default function App() {
     addCardItem={addCardItem}/>
     
     <ProductCard cardItem={cardItem} 
-    deleteCardItem={deleteCardItem}/>
+    deleteCardItem={deleteCardItem}
+    startEdit={startEdit}
+    saveEdit={saveEdit}/>
     </div>
     </>
     )

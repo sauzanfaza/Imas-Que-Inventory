@@ -1,6 +1,6 @@
 import SelectOption from "./SelectOption"
 
-export default function ProductCard({cardItem, deleteCardItem, id}) {
+export default function ProductCard({cardItem, deleteCardItem, id, startEdit, saveEdit}) {
     return(
         <>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
@@ -28,6 +28,8 @@ export default function ProductCard({cardItem, deleteCardItem, id}) {
             <div className="text-md cursor-pointer">
             <SelectOption 
             deleteCardItem={deleteCardItem}
+            startEdit={startEdit}
+            saveEdit={saveEdit}
             id={item.id}
             />
             </div>

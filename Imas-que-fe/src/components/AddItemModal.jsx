@@ -6,8 +6,8 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData(prev => ({
-            ...prev,
-            [name]: value
+            ...prev, //timpa data lama
+            [name]: value //cth: name:price value: 3000 --> price: 3000
         }))
     }
 
