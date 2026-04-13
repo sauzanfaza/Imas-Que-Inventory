@@ -1,7 +1,7 @@
 import { FaPlus } from "react-icons/fa6";
 import AddItemModal from "./AddItemModal";
 
-export default function ButtonAdd({isModalOpen, setIsModalOpen, formData, setFormData, addCardItem}) {
+export default function ButtonAdd({isModalOpen, setIsModalOpen, formData, setFormData, addCardItem, saveEdit, isEdit}) {
     const handleOpenModal = () => setIsModalOpen(!isModalOpen)
 
     return(
@@ -16,6 +16,8 @@ export default function ButtonAdd({isModalOpen, setIsModalOpen, formData, setFor
             isModalOpen={isModalOpen} 
             onClose={() => setIsModalOpen(false)}
             addCardItem={addCardItem}
+            saveEdit={saveEdit}
+            isEdit={isEdit}
         />
         </>
     )

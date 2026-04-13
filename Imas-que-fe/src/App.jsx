@@ -93,7 +93,9 @@ export default function App() {
     setIsModalOpen={setIsModalOpen}
     formData={formData} 
     setFormData={setFormData}
-    addCardItem={addCardItem}/>
+    addCardItem={addCardItem}
+    saveEdit={saveEdit}
+    isEdit={isEdit}/>
     
     <ProductCard cardItem={cardItem} 
     deleteCardItem={deleteCardItem}

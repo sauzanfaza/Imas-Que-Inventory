@@ -1,4 +1,4 @@
-export default function AddItemModal({ isModalOpen, onClose, formData, setFormData, addCardItem}) {
+export default function AddItemModal({ isModalOpen, onClose, formData, setFormData, addCardItem, saveEdit, isEdit}) {
     
     //Kalau gak open, jangan render apa-apa
     if (!isModalOpen) return null;
@@ -16,6 +16,17 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
             ...prev,
             image: e.target.files[0]
         }))
+    }
+
+    const resetForm = () => {
+        setFormData({
+            id: "",
+            productName: "",
+            price: "",
+            stock: "",
+            sold: "",
+            image: null
+        })
     }
 
     // const handleSubmit = (e) => {
@@ -74,9 +85,17 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
                     Close
                 </button>
                 <button
-                    onClick={addCardItem}
+                    onClick={() => {
+                        if(isEdit) {
+                            saveEdit()
+                        } else {
+                            addCardItem()
+                        }
+                        resetForm()
+                    }}
                     className="mt-4 bg-green-600 hover:bg-green-700 cursor-pointer text-white px-4 py-2 rounded">
-                    Add
+                    {isEdit ? "Save" : "Add"}
+                    
                 </button>
 
                 </div>
