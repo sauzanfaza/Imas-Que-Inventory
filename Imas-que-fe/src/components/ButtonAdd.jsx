@@ -6,8 +6,8 @@ export default function ButtonAdd({isModalOpen, setIsModalOpen, formData, setFor
 
     return(
         <>
-        <div className="flex items-center justify-between border border-slate-900 py-1 px-4 rounded-xl text-[12px] gap-2 hover:bg-slate-400">
-                <button onClick={handleOpenModal}>Add Item</button>
+        <div className="flex items-center justify-between border border-slate-900 py-1 lg:py-2 px-4 rounded-xl text-[12px] md:text-lg lg:text-xl xl:text-2xl gap-2 hover:bg-slate-400">
+                <button onClick={handleOpenModal} className="lg:py-1">Add Item</button>
                 <FaPlus />
         </div>
         <AddItemModal 
