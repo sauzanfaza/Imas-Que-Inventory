@@ -9,7 +9,7 @@ export default function Filter({isModalOpen, setIsModalOpen, formData, setFormDa
             <div className="flex items-center font-semibold justify-between gap-2">
                     <p className="text-[12px] md:text-xl lg:text-2xl xl:text-4xl">Filter</p>
                     <button>
-                        <IoFilter className="md:text-2xl lg:text-3xl xl:text-4xl"/>
+                        <IoFilter className="md:text-2xl lg:text-3xl xl:text-4xl cursor-pointer"/>
                     </button>                  
             </div>
             <ButtonAdd isModalOpen={isModalOpen} 

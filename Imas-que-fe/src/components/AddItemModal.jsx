@@ -39,7 +39,7 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             
             {/* Card modal */}
-            <div className="bg-white p-6 rounded-lg w-80 relative">
+            <div className="bg-white p-6 lg:p-12 rounded-lg w-70 md:w-80 lg:w-120 lg:h-100 relative">
                 <h2 className="text-lg font-semibold mb-4">Add Item</h2>
 
                 <div className="">
