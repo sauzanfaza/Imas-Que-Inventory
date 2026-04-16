@@ -1,8 +1,7 @@
 import Navbar from "./components/Navbar"
 import Filter from "./components/Filter"
 import ProductCard from "./components/ProductCard"
-import AddItemModal from "./components/AddItemModal"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 
 export default function App() {
     const [cardItem, setCardItem] = useState([])
@@ -18,6 +17,8 @@ export default function App() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const [editId, setEditId] = useState(null)
+
+    const [selectedFilter, setSelectedFilter] = useState("all")
 
     // add card item
     const addCardItem = () => {
@@ -84,6 +85,23 @@ export default function App() {
         setIsEdit(false)
         }
 
+        const filteredItems = useMemo(() => {
+            if(selectedFilter === "tersedia") {
+                return cardItem.filter((item) => (item.stock - item.sold) > 50)
+            }
+            if(selectedFilter === "low") {
+                return cardItem.filter((item) => {
+                    const sisa = item.stock - item.sold
+                    return sisa > 0 && sisa < 50
+                })
+            }
+            if(selectedFilter === "habis") {
+                return cardItem.filter((item) => (item.stock - item.sold) == 0)
+            }
+
+            return cardItem
+        }, [selectedFilter, cardItem])
+
     return(
     <>
     <div className="bg-slate-200 min-h-screen p-2">
@@ -95,9 +113,12 @@ export default function App() {
     setFormData={setFormData}
     addCardItem={addCardItem}
     saveEdit={saveEdit}
-    isEdit={isEdit}/>
+    isEdit={isEdit}
+    selectedFilter={selectedFilter}
+    setSelectedFilter={setSelectedFilter}/>
     
-    <ProductCard cardItem={cardItem} 
+    
+    <ProductCard cardItem={filteredItems} 
     deleteCardItem={deleteCardItem}
     startEdit={startEdit}
     saveEdit={saveEdit}/>

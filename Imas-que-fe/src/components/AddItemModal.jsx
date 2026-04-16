@@ -73,7 +73,7 @@ export default function AddItemModal({ isModalOpen, onClose, formData, setFormDa
 
                         <input type="file" 
                         // placeholder="image"
-                        className="border border-slate-600 rounded-lg w-full py-1 px-2 mb-2" 
+                        className="border border-slate-600 rounded-lg w-full py-1 px-2 mb-2 cursor-pointer" 
                         onChange={handleFileChange}/>
                 </div>
 

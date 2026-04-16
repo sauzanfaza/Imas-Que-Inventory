@@ -3,7 +3,7 @@ import SelectOption from "./SelectOption"
 export default function ProductCard({cardItem, deleteCardItem, id, startEdit, saveEdit}) {
     return(
         <>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-4 py-2">
         {cardItem.map((item) => (
         <div className="bg-slate-50 border border-slate-300 h-60 md:h-80 lg:h-90 xl:h-100 rounded-lg"
         key={item.id}>
