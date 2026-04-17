@@ -10,7 +10,7 @@ export default function ProductCard({cardItem, deleteCardItem, id, startEdit, sa
             <div className="h-30 md:h-40 lg:h-50 xl:h-60 m-3 rounded-lg bg-center">
                 {item.image && (
                     <img 
-                    src={URL.createObjectURL(item.image)}
+                    src={item.image}
                     alt={item.productName}
                     className="w-full h-full object-cover"
                     />
